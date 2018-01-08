@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dbproject:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dbproject="http://datical.com/db/project/1.0" name="LOCALDB" storedLogicExternal="true" deployThreshold="stopOnError" runtimeCredentials="false" multiSchema="false" dbSchemaDefinition="dbDef" enableRowCount="true">
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="TEST" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="TESTDEV" password="b3JhY2xl" contexts="dev" defaultSchemaName="TESTDEV" environment="DEV" sid="ORCL12" enableCompression="false"/>
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="QA" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="TESTPQT" password="b3JhY2xl" contexts="qa" defaultSchemaName="TESTPQT" environment="QA" sid="ORCL12" enableCompression="false"/>
+  <plans name="LOCALDB" databaseDefs="//@dbDefs[name='TEST'] //@dbDefs[name='QA']"/>
+  <changelog href="platform:/resource/LOCALDB/Changelog/changelog.xml#//@databaseChangeLog"/>
+</dbproject:Project>
