@@ -7,4 +7,11 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet author="PGM" context="INT" created="Thu Jan 11 12:13:58 CST 2018" id="TESTDEV_T2">
+        <createTable tableName="T2">
+            <column name="C1" type="CHAR(1)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
