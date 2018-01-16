@@ -831,3 +831,134 @@ PACKAGER PROPERTIES:
 00:40:02.324 [main] DEBUG c.d.hammer.repl.GroovyScriptCommand - Groovy script deployPackager.groovy returned Integer 1
 00:40:02.324 [main] INFO  com.datical - initializing drivers
 00:40:02.751 [main] INFO  com.datical - loaded JDBC drivers successfully
+00:42:41.164 [main] INFO  com.datical.hammer.repl.Main - Operation: [groovy] 
+00:42:41.165 [main] INFO  c.d.hammer.repl.GroovyScriptCommand - Java version 1.7.0_80
+00:42:41.165 [main] INFO  c.d.hammer.repl.GroovyScriptCommand - Groovy version 2.4.7
+00:42:41.166 [main] DEBUG c.d.hammer.repl.GroovyScriptCommand - Script name supplied is deployPackager.groovy
+00:42:41.166 [main] DEBUG c.d.hammer.repl.GroovyScriptCommand - Cleaned script name is  deployPackager.groovy
+00:42:41.210 [main] DEBUG deployPackager - args: pipeline=main, scm=true, preview
+00:42:41.211 [main] INFO  deployPackager - ===============================================================================
+00:42:41.212 [main] INFO  deployPackager - DATICAL DB: Packaging SQL Script(s) 
+00:42:41.212 [main] INFO  deployPackager - ===============================================================================
+00:42:41.213 [main] INFO  deployPackager - BEGIN: 2018-01-16-00:42:41
+00:42:41.213 [main] DEBUG ScriptUtils - createPackagerLog for merge mode 'pipeline'
+00:42:41.213 [main] DEBUG ScriptUtils -   logFilePath    'null'
+00:42:41.213 [main] DEBUG ScriptUtils -   deploymentStep 'ORCL12'
+00:42:41.214 [main] DEBUG ScriptUtils -   logFile        Reports\2018\01-Jan\ORCL12\packager_ORCL12_20180116_004241\packager.log
+00:42:41.214 [main] DEBUG deployPackager - Initializing new file appender for log file c:\app\oracle\svn\VALIC\pgm_datical\Reports\2018\01-Jan\ORCL12\packager_ORCL12_20180116_004241\packager.log
+00:42:41.215 [main] DEBUG deployPackager - Logging Filter: null
+00:42:41.215 [main] DEBUG deployPackager - Logging level: DEBUG
+00:42:41.215 [main] DEBUG deployPackager - Setting log level for new appender to DEBUG
+00:42:41.216 [main] DEBUG deployPackager - Starting new file appender for log file c:\app\oracle\svn\VALIC\pgm_datical\Reports\2018\01-Jan\ORCL12\packager_ORCL12_20180116_004241\packager.log
+00:42:41.217 [main] INFO  deployPackager - 
+PARAMETERS:
+00:42:41.217 [main] INFO  deployPackager -   merge mode:         pipeline
+00:42:41.218 [main] INFO  deployPackager -   pipeline:           main
+00:42:41.218 [main] INFO  deployPackager -   step:               
+00:42:41.218 [main] INFO  deployPackager -   scm:                true
+00:42:41.219 [main] INFO  deployPackager -   labels:             
+00:42:41.219 [main] INFO  deployPackager -   contexts:           
+00:42:41.219 [main] INFO  deployPackager -   preview:            true
+00:42:41.220 [main] INFO  deployPackager -   logfile:            c:\app\oracle\svn\VALIC\pgm_datical\Reports\2018\01-Jan\ORCL12\packager_ORCL12_20180116_004241\packager.log
+00:42:41.220 [main] DEBUG deployPackager - 
+Checking command line arguments:
+00:42:41.220 [main] DEBUG ScriptUtils - executing fileExists('','deployPackager.properties')
+00:42:41.220 [main] DEBUG ScriptUtils -     Absolute path is c:\app\oracle\svn\VALIC\pgm_datical\deployPackager.properties
+00:42:41.221 [main] DEBUG deployPackager -   Using scm as defined in deployPackager.properties
+00:42:41.221 [main] DEBUG deployPackager -   merge mode:         pipeline
+00:42:41.221 [main] DEBUG deployPackager - MERGE MODE PRE-CHECKS:
+00:42:41.221 [main] DEBUG deployPackager - Pipeline 'main' is valid.
+00:42:41.221 [main] DEBUG ScriptUtils - executing fileExists('','deployPackager.properties')
+00:42:41.222 [main] DEBUG ScriptUtils -     Absolute path is c:\app\oracle\svn\VALIC\pgm_datical\deployPackager.properties
+00:42:41.223 [main] INFO  deployPackager - 
+SOURCE CONTROL SETTINGS:
+00:42:41.223 [main] DEBUG deployPackager - onePropertySetButNotBoth (ddbScmSystem,ddbScmPath)
+00:42:41.223 [main] DEBUG deployPackager -   propValue1 is 'git'
+00:42:41.224 [main] DEBUG deployPackager -   propValue2 is '.'
+00:42:41.224 [main] INFO  deployPackager -   DDB SCM is in use
+00:42:41.224 [main] DEBUG deployPackager - onePropertySetButNotBoth (sqlScmSystem,sqlScmPath)
+00:42:41.224 [main] DEBUG deployPackager -   propValue1 is 'git'
+00:42:41.224 [main] DEBUG deployPackager -   propValue2 is '../pgm_dev'
+00:42:41.225 [main] INFO  deployPackager -   SQL SCM is in use
+00:42:41.225 [main] DEBUG deployPackager - sqlScmPathProp is 'sqlScmPath' because deployPackager.properties option 'scmBranchHandling' is not set.
+00:42:41.225 [main] DEBUG deployPackager - Getting SQL SCM last import ID property name in pipeline mode ...
+00:42:41.225 [main] DEBUG deployPackager -   Pipeline merge mode:  property name is sqlScmLastImportID
+00:42:41.225 [main] INFO  deployPackager - 
+DATICAL PROJECT:
+00:42:41.226 [main] INFO  deployPackager -   name:               PGMTST1
+00:42:41.227 [main] INFO  deployPackager -   pipeline:           main
+00:42:41.227 [main] INFO  deployPackager -   database:           ORCL12
+00:42:41.234 [main] INFO  deployPackager -   vendor:             oracle
+00:42:41.234 [main] INFO  deployPackager - 
+PACKAGER PROPERTIES:
+00:42:41.235 [main] INFO  deployPackager -   sqlScmSystem                  : 'git'
+00:42:41.235 [main] INFO  deployPackager -   ddbScmSystem                  : 'git'
+00:42:41.236 [main] INFO  deployPackager -   ORCLQA.sqlScmPath             : '../pgm_dev'
+00:42:41.236 [main] INFO  deployPackager -   enableBackupRestore           : 'ORCL12'
+00:42:41.236 [main] INFO  deployPackager -   ORCLQA.sqlScmLastImportID     : '4776eab'
+00:42:41.236 [main] INFO  deployPackager -   sqlScmLastImportID            : '4776eab'
+00:42:41.237 [main] INFO  deployPackager -   ORCLQA.sqlScmBranch           : 'qa'
+00:42:41.237 [main] INFO  deployPackager -   databaseBackupRestoreLocation : 'DATA_PUMP_DIR'
+00:42:41.237 [main] INFO  deployPackager -   sqlScmBranch                  : 'master'
+00:42:41.238 [main] INFO  deployPackager -   ddbScmBranch                  : 'master'
+00:42:41.238 [main] INFO  deployPackager -   ddbScmPath                    : '.'
+00:42:41.238 [main] INFO  deployPackager -   sqlScmSQLBaseDir              : 'datical_packaging'
+00:42:41.239 [main] INFO  deployPackager -   sqlScmPath                    : '../pgm_dev'
+00:42:41.239 [main] INFO  deployPackager -   ddlExcludeList                : '"package, packagebody, procedure, function, trigger, view"'
+00:42:41.239 [main] INFO  deployPackager - 
+
+00:42:41.239 [main] INFO  deployPackager - ===============================================================================
+00:42:41.239 [main] INFO  deployPackager - Determining which files to package
+00:42:41.240 [main] INFO  deployPackager - ===============================================================================
+00:42:41.240 [main] DEBUG deployPackager - Verifying packager properties...
+00:42:41.240 [main] DEBUG deployPackager - checking SCM Branch Handling properties
+00:42:41.240 [main] DEBUG deployPackager - sqlScmPathProp is 'sqlScmPath' because deployPackager.properties option 'scmBranchHandling' is not set.
+00:42:41.240 [main] DEBUG deployPackager -     found value '../pgm_dev' for property 'sqlScmPath'
+00:42:41.240 [main] DEBUG deployPackager - checking if configured sqlScmPath has a working copy with the correct branch.
+00:42:41.240 [main] DEBUG SCMOperations - currentScmBranch(git, ../pgm_dev)
+00:42:41.241 [main] DEBUG ScriptUtils - sysExec command: git branch
+00:42:41.241 [main] DEBUG ScriptUtils -   Working Directory: ../pgm_dev
+00:42:41.607 [main] DEBUG ScriptUtils - rc     : 0
+00:42:41.607 [main] DEBUG ScriptUtils - stdout : * master
+
+00:42:41.611 [main] DEBUG GIT - Current git branch is master for working copy ../pgm_dev
+00:42:41.611 [main] DEBUG deployPackager - sqlScmPathProp is 'sqlScmPath' because deployPackager.properties option 'scmBranchHandling' is not set.
+00:42:41.611 [main] DEBUG SCMOperations - --------- sqlScmSystem ----------
+00:42:41.612 [main] DEBUG ScriptUtils - sysExec command: git --version
+00:42:41.970 [main] DEBUG ScriptUtils - rc     : 0
+00:42:41.970 [main] DEBUG ScriptUtils - stdout : git version 2.10.2.windows.1
+
+00:42:41.970 [main] DEBUG GIT - git version 2.10.2.windows.1
+
+00:42:41.971 [main] DEBUG SCMOperations - --------- ddbScmSystem ----------
+00:42:41.971 [main] DEBUG ScriptUtils - sysExec command: git --version
+00:42:42.369 [main] DEBUG ScriptUtils - rc     : 0
+00:42:42.369 [main] DEBUG ScriptUtils - stdout : git version 2.10.2.windows.1
+
+00:42:42.369 [main] DEBUG GIT - git version 2.10.2.windows.1
+
+00:42:42.370 [main] DEBUG deployPackager - Checking that ignores are ok on ddb scm...
+00:42:42.370 [main] DEBUG ScriptUtils - sysExec command: git check-ignore --verbose daticaldb*.log
+00:42:42.370 [main] DEBUG ScriptUtils -   Working Directory: .
+00:42:42.753 [main] DEBUG ScriptUtils - rc     : 1
+00:42:42.754 [main] ERROR GIT - Your git working copy '.' does not ignore daticaldb*.log
+00:42:42.754 [main] ERROR GIT - This can cause problems if it is committed to SCM and then needs to be reverted.
+00:42:42.754 [main] ERROR GIT - 
+00:42:42.755 [main] ERROR GIT - Please fix as follows:
+00:42:42.755 [main] ERROR GIT -    (1) Create a .gitignore file, if it doesn't already exist
+00:42:42.755 [main] ERROR GIT -    (2) Add the new line 'daticaldb*.log' to your .gitignore file and save it
+00:42:42.755 [main] ERROR GIT -    (3) Execute (it's okay if this returns an error):
+00:42:42.756 [main] ERROR GIT -         git rm --cached daticaldb*.log
+00:42:42.756 [main] ERROR GIT -    (4) If the .gitignore file is new, Execute:
+00:42:42.756 [main] ERROR GIT -         git add .gitignore
+00:42:42.756 [main] ERROR GIT -    (5) Execute:
+00:42:42.756 [main] ERROR GIT -         git commit -m "Ignoring the daticaldb*.log file"
+00:42:42.757 [main] ERROR GIT -    (6) Execute:
+00:42:42.757 [main] ERROR GIT -         git push
+00:42:42.757 [main] ERROR GIT -    (7) Verify the fix by running:
+00:42:42.758 [main] ERROR GIT -         git check-ignore --verbose daticaldb*.log
+00:42:42.758 [main] ERROR GIT -         (the result should look something like this:  ".gitignore:1:daticaldb*.log      daticaldb*.log")
+00:42:42.758 [main] DEBUG deployPackager - Failed checking that ignores are OK
+00:42:42.758 [main] DEBUG c.d.hammer.repl.GroovyScriptCommand - Groovy script deployPackager.groovy returned Integer 1
+00:42:42.758 [main] INFO  com.datical - initializing drivers
+00:42:42.851 [main] INFO  com.datical - loaded JDBC drivers successfully
