@@ -1,3 +1,11 @@
-daticaldb.properties
+Logs/
+Reports/
+Snapshots/
+Profiles/
+templates/
+/.classpath
+/.metadata
+/.reporttemplates
 daticaldb*.log
 packager*.log
+daticaldb.properties
