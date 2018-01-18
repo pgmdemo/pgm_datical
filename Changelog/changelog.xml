@@ -14,7 +14,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet appdba:scriptChecksum="6a0c83f65cb45d8f7ed1c34098908cfb" author="T54VCDE (generated)" context="INT" created="2018-01-17 22:14-0600" id="fui1-1 (createTable tableName=T3)" labels="main, t3.tbl" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet appdba:scriptChecksum="6a0c83f65cb45d8f7ed1c34098908cfb" author="T54VCDE (generated)" context="INT" created="2018-01-17 22:14-0600" id="fui1-1 (createTable tableName=T3)" labels="main,t3.tbl" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <createTable schemaName="TESTDEV" tableName="T3">
             <column name="C3" type="CHAR(1 BYTE)"/>
             <appdba:storageOptions dbms="oracle" path="testdev/storage/T3_tbl_1516248889129.sql"/>
