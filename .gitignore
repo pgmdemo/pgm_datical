@@ -3,6 +3,7 @@ Reports/
 Snapshots/
 Profiles/
 templates/
+backup/
 /.classpath
 /.metadata
 /.reporttemplates
