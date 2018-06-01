@@ -5,12 +5,11 @@ dialect "mvel"
 import com.datical.hammer.core.rules.GeneratedSQL;
 import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
-import org.apache.commons.lang.StringUtils;
 
 rule "Generated SQL should not contain Select * "
 	salience 992
 	when
-		genSQL : GeneratedSQL( containsIgnoreCase(genSQL.outputSQL ," Select * ")
+		genSQL : GeneratedSQL( genSQL.outputSQL contains " Select * " )
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
