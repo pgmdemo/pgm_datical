@@ -9,7 +9,7 @@ import com.datical.hammer.core.rules.Response.ResponseType;
 rule "Generated SQL should not contain Select * "
 	salience 992
 	when
-		genSQL : GeneratedSQL( genSQL.outputSQL containsIgnoreCase " Select * " )
+		genSQL : GeneratedSQL( genSQL.outputSQL.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","") contains  Select * " )
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
