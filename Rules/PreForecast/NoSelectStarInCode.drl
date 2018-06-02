@@ -22,9 +22,9 @@ return l2_text;
 }
 
 rule "Generated SQL should not contain Select * "
-	salience 992
+	salience 997
 	when
-		genSQL : ( GeneratedSQL( StripOracleComments ( genSQL.outputSQL) ) contains  " Select * " 
+		genSQL : ( StripOracleComments (GeneratedSQL(  genSQL.outputSQL) )) contains  " Select * " 
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
