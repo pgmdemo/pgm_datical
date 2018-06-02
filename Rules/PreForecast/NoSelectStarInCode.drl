@@ -10,14 +10,14 @@ import org.apache.commons.lang.StringUtils;
 function String StripOracleComments(String mYText) {
 String l1_text := new String();
 String l2_text ;
-String[] myTextList := split(mYText,'\n');
+String[] myTextList := split(mYText,"\n");
 	for (i=0;i<myTextList.count;i++ )
 	{    l1_text = trim(myTextList[i]) ;
-		 l1_text = isEmpty(l1_text)? l1_text : (contains(l1_text,'--' ) ? left(l1_text,indexOf(l1_text,'--')-1):l1_text );
+		 l1_text = isEmpty(l1_text)? l1_text : (contains(l1_text,"--" ) ? left(l1_text,indexOf(l1_text,"--")-1):l1_text );
 		 System.out.println(l1_text) ;
 		 myTextList[i] = l1_text;
 	}
-l2_text = join(myTextList[i],'\n');
+l2_text = join(myTextList[i],"\n");
 return l2_text;
 }
 
