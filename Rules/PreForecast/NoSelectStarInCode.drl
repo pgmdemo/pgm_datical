@@ -7,10 +7,24 @@ import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import org.apache.commons.lang.StringUtils;
 
+function String StripOracleComments(String mYText) {
+String l1_text := new String();
+String l2_text ;
+String[] myTextList := split(mYText,'\n');
+	for (i=0;i<myTextList.count;i++ )
+	{    l1_text = trim(myTextList[i]) ;
+		 l1_text = isEmpty(l1_text)? l1_text : (contains(l1_text,'--' ) ? left(l1_text,indexOf(l1_text,'--')-1):l1_text );
+		 System.out.println(l1_text) ;
+		 myTextList[i] = l1_text;
+	}
+l2_text = join(myTextList[i],'\n');
+return l2_text;
+}
+
 rule "Generated SQL should not contain Select * "
 	salience 992
 	when
-		genSQL : GeneratedSQL( genSQL.outputSQL.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","") containsIgnoreCase  "Select * " )
+		genSQL : ( StripOracleComments (GeneratedSQL( genSQL.outputSQL)) contains  "Select * " 
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
