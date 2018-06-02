@@ -1,6 +1,5 @@
 package com.datical.hammer.core.forecast
 
-dialect "mvel"
 
 import com.datical.hammer.core.rules.GeneratedSQL;
 import com.datical.hammer.core.rules.Response;
@@ -21,10 +20,12 @@ l2_text = join(myTextList[i],"\n");
 return l2_text;
 }
 
+dialect "mvel"
+
 rule "Generated SQL should not contain Select * "
 	salience 997
 	when
-		 ( StripOracleComments (genSQL : GeneratedSQL(  genSQL.outputSQL) ) contains  " Select * " )
+		 ( StripOracleComments ( genSQL : GeneratedSQL(  genSQL.outputSQL) ) contains  " Select * " )
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
