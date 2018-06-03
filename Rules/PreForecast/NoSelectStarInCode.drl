@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-List<String> function  StripOracleComments(String[] mYText) {
+function  StripOracleComments(String[] mYText) {
     boolean inBlock = false;
 	List<String> filteredText = new ArrayList();
 	StringBuilder newline = new StringBuilder();
