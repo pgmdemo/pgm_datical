@@ -14,7 +14,7 @@ function  StripOracleComments(String mYText) {
 	List<String> sourceText = split(mYText,'\r');
 	List<String> filteredText = new ArrayList();
 	StringBuilder newline = new StringBuilder();
-	for (String line: mYText) {
+	for (String line: sourceText) {
 		i = 0;
 		char[] chars = line.toCharArray();
 		if (!inBlock) newline = new StringBuilder();
