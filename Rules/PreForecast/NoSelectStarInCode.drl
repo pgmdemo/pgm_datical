@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-function  StripOracleComments(String[] mYText) {
+function  StripOracleComments(String mYText) {
     boolean inBlock = false;
+	List<String> sourceText = split(mYText,'\r');
 	List<String> filteredText = new ArrayList();
 	StringBuilder newline = new StringBuilder();
 	for (String line: mYText) {
