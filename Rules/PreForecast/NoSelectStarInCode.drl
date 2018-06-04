@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import java.util.List;
 import java.util.ArrayList;
 
-function  String sTripOracleComments(String mYText) {
+def   sTripOracleComments( mYText) {
     boolean inBlock = false;
 	List<String> sourceText = split(mYText,'\r');
 	List<String> filteredText = new ArrayList();
@@ -49,8 +49,7 @@ dialect "mvel" ;
 rule "Generated SQL should not contain Select * "
 	salience 997
 	when
-		 $currSQL : GeneratedSQL  ( genSQL.outputSQL )   ;
-		 String : ( sTripOracleComments( $currSQL ) contains " select * " );
+		 genSQL : GeneratedSQL  ( sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
