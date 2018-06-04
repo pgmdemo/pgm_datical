@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-function  StripOracleComments(String mYText) {
+String function  StripOracleComments(String mYText) {
     boolean inBlock = false;
 	List<String> sourceText = split(mYText,'\r');
 	List<String> filteredText = new ArrayList();
@@ -47,7 +47,6 @@ dialect "mvel"
 rule "Generated SQL should not contain Select * "
 	salience 997
 	when
-		 genSQL : GeneratedSQL(  StripOracleComments ( genSQL.outputSQL )   contains  " Select * " )
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
