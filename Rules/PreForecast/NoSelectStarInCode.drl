@@ -13,6 +13,7 @@ function  String sTripOracleComments(String mYText) {
 	List<String> sourceText = split(mYText,'\r');
 	List<String> filteredText = new ArrayList();
 	StringBuilder newline = new StringBuilder();
+	String cleanText ;
 	for (String line: sourceText) {
 		i = 0;
 		char[] chars = line.toCharArray();
@@ -37,7 +38,8 @@ function  String sTripOracleComments(String mYText) {
                 filteredText.add(new String(newline));
             }
         }
-        return filteredText;			
+        cleanText=join(filteredText,' ');			
+		return cleanText;
 }
 
 
@@ -48,7 +50,7 @@ rule "Generated SQL should not contain Select * "
 	salience 997
 	when
 		 $currSQL : GeneratedSQL  ( genSQL.outputSQL )   ;
-		 ( sTripOracleComments( $currSQL ) contains " select * " );
+		 String : ( sTripOracleComments( $currSQL ) contains " select * " );
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
