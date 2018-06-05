@@ -21,11 +21,10 @@ dialect "mvel" ;
 
 
 rule "Generated SQL should not contain Select * "
-	salience 3
+	salience 91
 	when
-	      
-		 genSQL : GeneratedSQL  ( $myCode: genSQL.outputSQL )  ;
-		 eval(checkCodehasSelectStar($myCode));
+		 $genSQL : GeneratedSQL.outputSQL;
+		 eval(checkCodehasSelectStar( $genSQL ));
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
