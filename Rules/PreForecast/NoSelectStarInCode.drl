@@ -7,41 +7,7 @@ import com.datical.hammer.core.rules.Response.ResponseType;
 import org.apache.commons.lang.StringUtils;
 import java.util.List;
 import java.util.ArrayList;
-
-def   sTripOracleComments( mYText) {
-    boolean inBlock = false;
-	List<String> sourceText = split(mYText,'\r');
-	List<String> filteredText = new ArrayList();
-	StringBuilder newline = new StringBuilder();
-	String cleanText ;
-	for (String line: sourceText) {
-		i = 0;
-		char[] chars = line.toCharArray();
-		if (!inBlock) newline = new StringBuilder();
-		while (i < line.length()) {
-                if (!inBlock && i+1 < line.length() && chars[i] == '/' && chars[i+1] == '*') {
-                    inBlock = true;
-                    i++;
-                } else if (inBlock && i+1 < line.length() && chars[i] == '*' && chars[i+1] == '/') {
-                    inBlock = false;
-                    i++;
-                } else if (!inBlock && i+1 < line.length() && chars[i] == '-' && chars[i+1] == '-') {
-                    break;
-				} else if (!inBlock && i+1 < line.length() && chars[i]==' ' && chars[i+1] == '-') {
-                    i++ ;					
-                } else if (!inBlock) {
-                    newline.append(chars[i]);
-                }
-                i++;
-            }
-		if (!inBlock && newline.length() > 0) {
-                filteredText.add(new String(newline));
-            }
-        }
-        cleanText=join(filteredText,' ');			
-		return cleanText;
-}
-
+import com.valic.util.OracleCodeUtilities ;
 
 dialect "mvel" ;
 
@@ -49,7 +15,8 @@ dialect "mvel" ;
 rule "Generated SQL should not contain Select * "
 	salience 997
 	when
-		 genSQL : GeneratedSQL  ( sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
+	     $orclUtil : OracleCodeUtilities();
+		 genSQL : GeneratedSQL  ( $orclUtil.sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
