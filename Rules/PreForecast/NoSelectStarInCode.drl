@@ -24,7 +24,7 @@ rule "Generated SQL should not contain Select * "
 	salience 3
 	when
 	      
-		 genSQL : GeneratedSQL  ( $myCode genSQL.outputSQL )  ;
+		 genSQL : GeneratedSQL  ( $myCode: genSQL.outputSQL )  ;
 		 eval(checkCodehasSelectStar($myCode));
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
