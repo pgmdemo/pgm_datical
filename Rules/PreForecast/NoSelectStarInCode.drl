@@ -13,8 +13,8 @@ import com.datical.hammer.core.rules.GeneratedSQL;
 import com.valic.util.OracleCodeUtilities ;
 
 function boolean fncheckCodehasSelectStar(String myCode) {
-	com.valic.util.OracleCodeUtilities orclUtil= new com.valic.util.OracleCodeUtilities();
-	orclUtil.stripOracleComments( myCode ).contains( " select * " ) ;
+	OracleCodeUtilities orclUtil= new OracleCodeUtilities();
+	orclUtil.stripOracleComments( myCode ).containsIgnoreCase( " select * " ) ;
 }
 
 
