@@ -9,14 +9,16 @@ import java.util.List;
 import java.util.ArrayList;
 import com.valic.util.OracleCodeUtilities ;
 
+global OracleCodeUtilities orclUtils ;
+
 dialect "mvel" ;
 
 
 rule "Generated SQL should not contain Select * "
 	salience 997
 	when
-	     $orclUtil : OracleCodeUtilities();
-		 genSQL : GeneratedSQL  ( $orclUtil.sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
+	      
+		 genSQL : GeneratedSQL  ( orclUtils.sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
