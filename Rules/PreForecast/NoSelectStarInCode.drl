@@ -1,24 +1,25 @@
 package com.datical.hammer.core.forecast
 
 
-import com.datical.hammer.core.rules.GeneratedSQL;
+import java.util.Collection;
+import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.collections.ListUtils;
 import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
-import org.apache.commons.lang.StringUtils;
-import java.util.List;
-import java.util.ArrayList;
+import com.datical.hammer.core.rules.GeneratedSQL;
 import com.valic.util.OracleCodeUtilities ;
-
-global OracleCodeUtilities orclUtils ;
 
 dialect "mvel" ;
 
 
 rule "Generated SQL should not contain Select * "
-	salience 997
+	salience 3
 	when
 	      
-		 genSQL : GeneratedSQL  ( orclUtils.sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
+		 genSQL : GeneratedSQL  ( new com.valic.util.OracleCodeUtilities().sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
