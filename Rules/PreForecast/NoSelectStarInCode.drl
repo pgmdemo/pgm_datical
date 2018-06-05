@@ -12,6 +12,11 @@ import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.GeneratedSQL;
 import com.valic.util.OracleCodeUtilities ;
 
+function boolean checkCodehasSelectStar(String myCode) {
+com.valic.util.OracleCodeUtilities orclUtil= new com.valic.util.OracleCodeUtilities();
+orclUtil.stripOracleComments(myCode).contains("select *") ;
+}
+
 dialect "mvel" ;
 
 
@@ -19,7 +24,8 @@ rule "Generated SQL should not contain Select * "
 	salience 3
 	when
 	      
-		 genSQL : GeneratedSQL  ( new com.valic.util.OracleCodeUtilities().sTripOracleComments( genSQL.outputSQL ) contains " select * " ) ;
+		 genSQL : GeneratedSQL  ($myCode genSQL.outputSQL )  ;
+		 eval(checkCodehasSelectStar($myCode));
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
