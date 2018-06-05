@@ -14,17 +14,17 @@ import com.valic.util.OracleCodeUtilities ;
 
 function boolean fncheckCodehasSelectStar(String myCode) {
 com.valic.util.OracleCodeUtilities orclUtil= new com.valic.util.OracleCodeUtilities();
-orclUtil.stripOracleComments(myCode).contains("select *") ;
+orclUtil.stripOracleComments( myCode ).contains( " select * " ) ;
 }
 
 dialect "mvel" ;
 
 
 rule "Generated SQL should not contain Select * "
-	salience 91
+	salience 11
 	when
-	     genSQL :  GeneratedSQL( ) 
-		eval( fncheckCodehasSelectStar(  $genSQL.outputSQL ) ) ;
+	     genSQL : GeneratedSQL( $outSQL : genSQL.outputSQL )
+		 eval( fncheckCodehasSelectStar(  $outSQL ) ) ;
 	then
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
