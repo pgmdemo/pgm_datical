@@ -21,9 +21,9 @@ function boolean fncheckCodehasSelectStar(String myCode) {
 rule "Generated SQL should not contain Select * "
 	salience 11
 	when
-	     $genSQL : GeneratedSQL($srcSQL : genSQL.outputSQL )
+	     genSQL : GeneratedSQL(srcSQL : genSQL.outputSQL )
 	then
-	  if ( fncheckCodehasSelectStar ( $srcSQL ) ) {
+	  if ( fncheckCodehasSelectStar ( srcSQL ) ) {
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
 		}
