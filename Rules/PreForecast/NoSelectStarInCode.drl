@@ -12,9 +12,7 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
    String filteredText = new String();
-
 	for (String line: sourceText) {
-        System.out.println(" Input Text : " + line );	
 	    StringBuilder newline = new StringBuilder();
 		int i = 0;
 		char[] ch = line.toCharArray();
@@ -39,7 +37,6 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 		}
    }
   
-  System.out.println(" Search String :"+ qryString ) ;
   System.out.println(" Now Filtered Text : "+ filteredText );	  
   return filteredText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
 }
