@@ -51,6 +51,7 @@ function String fnStripOracleComments ( String inputStr ) {
 */
  
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
+  System.out.println(inputStr.replaceAll("\\s+", " "));
   return inputStr.replaceAll("\\s+", " ").contains( qryString ) ;
 }
 
