@@ -50,7 +50,6 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
    ArrayList<String> filteredText = new ArrayList<String>();
-   StringBuilder cleanText = new StringBuilder();
    String cleanStr = new String();
 
 	for (String line: sourceText) {
@@ -79,14 +78,13 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
          System.out.println(" Now Input Text : "+ newline );	
 		}
    }
+   Object[] objText = filteredText.toArray();
+   String[] strText = Arrays.copyOf(objText, objText.length, String[].class);
+   cleanStr = String.join(" ",strText) ;
    
-   for (String s : filteredText) {
-     cleanText.append(S).append(" ");
-   }
-   
-  System.out.println(" Comment Filtered Text : "+ cleanText);	
+  System.out.println(" Comment Filtered Text : "+ cleanStr);	
   System.out.println(" Search String :"+ qryString ) ;
-  return cleanText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
+  return cleanStr.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
 }
 
 
