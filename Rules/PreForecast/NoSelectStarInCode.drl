@@ -51,12 +51,40 @@ function String fnStripOracleComments ( String inputStr ) {
 */
  
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
-  String[] sourceText = inputStr.split("\n");
+	boolean inBlock = false;
+   String[] sourceText = inputStr.split("\n");
+	List<String> filteredText = new ArrayList();
+	StringBuilder newline = new StringBuilder();
+	String cleanText ;
 	for (String line: sourceText) {
-	System.out.println(" New Line :"+ line );
+       System.out.println(" Input Text : " + line );	
+	  
+		int i = 0;
+		char[] ch = line.toCharArray();
+	    boolean inLineComment = false;
+		while(i< line.length()) {
+			if (!inBlock && !inLineComment && (i+1 < line.length() ) && ch[i]=='/' && ch[i+1]=='*') {
+			 inBlock=true;
+			 i++;
+			} elsif (!inBlock && !inLineComment && (i+1 < line.length() ) && ch[i]=='-' && ch[i+1]=='-') {
+			 inLineComment=true;
+			 i++;
+			} elsif (inBlock && (i+1 < line.length() ) && ch[i]=='*' && ch[i+1]=='//') {
+			 inBlock=false;
+			 i++;
+			} elsif (!inBlock && !inLineComment) {
+			  newline.append(ch[i]);
+			} 
+			i++;
+		}
+		if (newline.length() > 0 ) {
+		  filteredText.append(new String (newline).trim()) ;
+		}
 	}
+	cleanText := new String().join(" ",filteredText);
+  System.out.println(" Filtered Text : " + cleanText);	
   System.out.println(" Search String :"+ qryString ) ;
-  return inputStr.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
+  return cleanText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
 }
 
 
