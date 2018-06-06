@@ -35,12 +35,12 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 			i++;
 		}
 		if (newline.length() > 0 ) {
-		  filteredText += newline ;
-         System.out.println(" Now Input Text : "+ newline );	
+		  filteredText += newline.toString() ;
 		}
    }
-  System.out.println(" Comment Filtered Text : "+ filteredText);	
+  
   System.out.println(" Search String :"+ qryString ) ;
+  System.out.println(" Now Filtered Text : "+ filteredText );	  
   return filteredText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
 }
 
