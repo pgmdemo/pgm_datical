@@ -79,8 +79,8 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 		}
 		if (newline.length() > 0 ) {
 		  cleanTextSb.append(new String(newline)) ;
+         System.out.println(" Now Input Text : " + newline );	
 		}
-       System.out.println(" New Input Text : " + newline );	
    }
   String cleanText = new String(cleanTextSb);	
   System.out.println(" Comment Filtered Text : " + cleanText);	
