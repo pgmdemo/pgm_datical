@@ -35,7 +35,7 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 			i++;
 		}
 		if (newline.length() > 0 ) {
-		  filteredText = filteredText + newline ;
+		  filteredText += newline ;
          System.out.println(" Now Input Text : "+ newline );	
 		}
    }
