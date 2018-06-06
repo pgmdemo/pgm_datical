@@ -12,7 +12,6 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
    ArrayList<String> filteredText = new ArrayList<String>();
-   String cleanStr = new String();
 
 	for (String line: sourceText) {
         System.out.println(" Input Text : " + line );	
