@@ -3,48 +3,10 @@ package com.datical.hammer.core.forecast
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.GeneratedSQL;
-
-/*
-function String fnStripOracleComments ( String inputStr ) {
-	boolean inBlock = false;
-	boolean inLineComment = false;
-	String[] sourceText = inputStr.split("\n");
-	List<String> filteredText = new ArrayList();
-	StringBuilder newline = new StringBuilder();
-	String cleanText ;
-	for (String line: sourceText) {
-		int i = 0;
-		char[] chars = line.toCharArray();
-		if (!inBlock) newline = new StringBuilder();
-		inLineComment = false ;
-		while (i < line.length()) {
-				if (!inBlock && !inLineComment && i+1 < line.length() && chars[i] == '/' && chars[i+1] == '*') {
-					inBlock = true;
-					i++;
-				} else if (inBlock && i+1 < line.length() && chars[i] == '*' && chars[i+1] == '/') {
-					inBlock = false;
-					i++;
-				} else if (!inBlock && !inLineComment   && i+1 < line.length() && chars[i] == '-' && chars[i+1] == '-') {
-					inLineComment = true ;
-					i++;
-				} else if (!inBlock && !inLineComment  ) {
-					newline.append(chars[i]);
-				}
-				i++;
-			}
-		
-		if (!inBlock && newline.length() > 0) {
-				filteredText.add(newline.toString() );
-			}
-		}
-	return String.join(" ", filteredText ).replaceAll("\\s+", " ") ;
-
-}
-
-*/
  
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
@@ -78,8 +40,7 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
          System.out.println(" Now Input Text : "+ newline );	
 		}
    }
-   Object[] objText = filteredText.toArray();
-   String[] strText = Arrays.copyOf(objText, objText.length, String[].class);
+   String strText = Arrays.toString(filteredText.toArray());
    cleanStr = String.join(" ",strText) ;
    
   System.out.println(" Comment Filtered Text : "+ cleanStr);	
