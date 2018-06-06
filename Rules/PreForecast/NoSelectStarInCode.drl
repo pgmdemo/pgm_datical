@@ -50,6 +50,7 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
 	List<String> filteredText = new ArrayList();
+   String cleanText = new String();
 
 	for (String line: sourceText) {
         System.out.println(" Input Text : " + line );	
@@ -78,7 +79,6 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 		}
    }
    
-   String cleanText = new String();
    for (String s :	filteredText) {
      cleanText.append(S).append(" ");
    }
