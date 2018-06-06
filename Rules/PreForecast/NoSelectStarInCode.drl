@@ -81,7 +81,6 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 		  filteredText.add(new String (newline).trim()) ;
 		}
 	}
-	cleanText = String.join(filteredText," ");
   System.out.println(" Filtered Text : " + cleanText);	
   System.out.println(" Search String :"+ qryString ) ;
   return cleanText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
