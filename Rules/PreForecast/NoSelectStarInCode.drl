@@ -53,10 +53,11 @@ function String fnStripOracleComments ( String inputStr ) {
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
-	List<String> filteredText = new ArrayList();
-	StringBuilder newline = new StringBuilder();
+	StringBuilder cleanTextSb = new StringBuilder();
+
 	for (String line: sourceText) {
        System.out.println(" Input Text : " + line );	
+	  StringBuilder newline = new StringBuilder();
 	  
 		int i = 0;
 		char[] ch = line.toCharArray();
@@ -77,12 +78,10 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 			i++;
 		}
 		if (newline.length() > 0 ) {
-		  filteredText.add(new String (newline).trim()) ;
+		  cleanTextSb.append(new String (newline).trim()) ;
 		}
 	}
-     String[] sArr = new String[filteredText.size()];
-        sArr = filteredText.toArray();	
-  String cleanText = String.join(" ", sArr );
+  String cleanText = cleanTextSb.toString();	
   System.out.println(" Comment Filtered Text : " + cleanText);	
   System.out.println(" Search String :"+ qryString ) ;
   return cleanText.replaceAll("\\s+", " ").toLowerCase().contains( qryString.toLowerCase() ) ;
