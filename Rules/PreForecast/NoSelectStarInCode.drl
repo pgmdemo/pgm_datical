@@ -11,6 +11,7 @@ import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.GeneratedSQL;
 
+/*
 function String fnStripOracleComments ( String inputStr ) {
 	boolean inBlock = false;
 	boolean inLineComment = false;
@@ -47,8 +48,10 @@ function String fnStripOracleComments ( String inputStr ) {
 
 }
 
+*/
+ 
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
-  return fnStripOracleComments(  inputStr ).contain(qryString) ;
+  return true ;
 }
 
 
