@@ -10,11 +10,45 @@ import org.apache.commons.collections.ListUtils;
 import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.GeneratedSQL;
-import com.valic.util.OracleCodeUtilities ;
 
-function boolean fncheckCodehasSelectStar(String myCode) {
-	com.valic.util.OracleCodeUtilities orclUtil= new com.valic.util.OracleCodeUtilities();
-	orclUtil.stripOracleComments( myCode ).containsIgnoreCase( " select * " ) ;
+function String fnStripOracleComments ( String inputStr ) {
+	boolean inBlock = false;
+	boolean inLineComment = false;
+	String[] sourceText = inputStr.split("\n");
+	List<String> filteredText = new ArrayList();
+	StringBuilder newline = new StringBuilder();
+	String cleanText ;
+	for (String line: sourceText) {
+		int i = 0;
+		char[] chars = line.toCharArray();
+		if (!inBlock) newline = new StringBuilder();
+		inLineComment = false ;
+		while (i < line.length()) {
+				if (!inBlock && !inLineComment && i+1 < line.length() && chars[i] == '/' && chars[i+1] == '*') {
+					inBlock = true;
+					i++;
+				} else if (inBlock && i+1 < line.length() && chars[i] == '*' && chars[i+1] == '/') {
+					inBlock = false;
+					i++;
+				} else if (!inBlock && !inLineComment   && i+1 < line.length() && chars[i] == '-' && chars[i+1] == '-') {
+					inLineComment = true ;
+					i++;
+				} else if (!inBlock && !inLineComment  ) {
+					newline.append(chars[i]);
+				}
+				i++;
+			}
+		
+		if (!inBlock && newline.length() > 0) {
+				filteredText.add(new String(newline).trim() );
+			}
+		}
+	return String.join(" ", filteredText ).replaceAll("\\s+", " ") ;
+
+}
+
+function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
+  return fnStripOracleComments(  inputStr ).contain(qryString) ;
 }
 
 
@@ -23,7 +57,7 @@ rule "Generated SQL should not contain Select * "
 	when
 	     genSQL : GeneratedSQL( srcSQL : outputSQL )
 	then
-	  if ( fncheckCodehasSelectStar ( srcSQL ) ) {
+	  if ( fncheckCodehasSelectStar ( srcSQL ," select * ") ) {
 		String errorMessage = "The generated SQL contains Wild Select Statement 'Select *'";
 		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
 		}
