@@ -49,7 +49,7 @@ function String fnStripOracleComments ( String inputStr ) {
 function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 	boolean inBlock = false;
    String[] sourceText = inputStr.split("\n");
-	List<String> filteredText = new ArrayList();
+   ArrayList<String> filteredText = new ArrayList<String>();
    String cleanText = new String();
 
 	for (String line: sourceText) {
@@ -79,7 +79,7 @@ function boolean fncheckCodehasSelectStar(String inputStr, String qryString ) {
 		}
    }
    
-   for (String s :	filteredText) {
+   for (String s :String[] filteredText.toArray()) {
      cleanText.append(S).append(" ");
    }
    
