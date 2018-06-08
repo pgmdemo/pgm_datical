@@ -1,0 +1,26 @@
+/*
+@author Kevin Chappell
+@version 1.0
+@date December 16, 2016
+@description Error when tables are missing a schema name designation
+*/
+package com.datical.hammer.core.sqlrules
+
+import com.datical.db.project.Project;
+import com.datical.hammer.core.rules.Response;
+import com.datical.hammer.core.rules.Response.ResponseType;
+import com.datical.hammer.core.rules.WithComments;
+import com.datical.hammer.core.rules.WithoutComments;
+
+// Development tip: Use regex creation and debugging site: https://regex101.com
+// .*(create)(\s+)(table)(?!.*[.].*)([^(]+)[(].*
+
+rule "Create Table: The schema specification is missing and needs to be specified"
+    salience 1
+    when
+        wc : WithoutComments(getText().toLowerCase() matches ".*(select)(\\s+)(\\*|\\w+\\.\\*)(\\s+)(?!.*[.].*)([^(]+)[(].*" )
+    then
+ 		String errorMessage =  "Select * is Used in SQL script: " +
+           wc.getSqlFile().getName();
+        insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
+end
