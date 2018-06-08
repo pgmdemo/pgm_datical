@@ -13,12 +13,13 @@ import com.datical.hammer.core.rules.WithComments;
 import com.datical.hammer.core.rules.WithoutComments;
 
 // Development tip: Use regex creation and debugging site: https://regex101.com
-// .*(create)(\s+)(table)(?!.*[.].*)([^(]+)[(].*
+
 
 rule "Create Table: The schema specification is missing and needs to be specified"
     salience 1
     when
-        wc : WithoutComments(getText().toLowerCase() matches ".*(select)(\\s+)(\\*|\\w+\\.\\*)(\\s+)(?!.*[.].*)([^(]+)[(].*" )
+		genSQL : GeneratedSQL( srcSQL : outputSQL )
+        wc : WithoutComments( srcSQL.toLowerCase() matches "(select(\\s+)(\\*)(\\s+)" )
     then
  		String errorMessage =  "Select * is Used in SQL script: " +
            wc.getSqlFile().getName();
