@@ -18,9 +18,8 @@ import com.datical.hammer.core.rules.WithoutComments;
 rule "Create Table: The schema specification is missing and needs to be specified"
     salience 1
     when
-        wc : WithoutComments(getText().toLowerCase() matches ".*(select)(\\s+)(\\*)(?!.*[.].*)([^(]+)[(].*" )
+        wc : WithoutComments() 
     then
- 		String errorMessage =  "Select * is Used in SQL script: " +
-           wc.getSqlFile().getName();
-        insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
+ 		String errorMessage =  "Now Processing File " + wc.getSqlFile().getName();
+        insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
 end
