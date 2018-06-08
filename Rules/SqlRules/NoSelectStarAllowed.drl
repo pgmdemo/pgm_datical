@@ -22,6 +22,6 @@ rule "Create Table: The schema specification is missing and needs to be specifie
 		
     then
 	    
- 		String errorMessage =  "\n Now Processing File " + wc.getSqlFile().getText();
+ 		String errorMessage =  "\n Now Processing File " + wc.getSqlFile().getName();
         insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
 end
