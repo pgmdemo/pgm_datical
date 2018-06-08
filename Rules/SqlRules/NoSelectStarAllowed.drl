@@ -19,7 +19,9 @@ rule "Create Table: The schema specification is missing and needs to be specifie
     salience 1
     when
         wc : WithoutComments() 
+		
     then
- 		String errorMessage =  "Now Processing File " + wc.getSqlFile().getName();
+	    
+ 		String errorMessage =  "\n Now Processing File " + wc.getSqlFile().getText();
         insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
 end
