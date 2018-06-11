@@ -12,25 +12,24 @@ import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.WithComments;
 import com.datical.hammer.core.rules.WithoutComments;
 
-// Development tip: Use regex creation and debugging site: https://regex101.com
 
-
-
-
-function boolean validateText(String sql)
+function boolean hasSelectStar(String mySql)
 {
 	System.out.println("Validation called For : "+ sql);
-	return true;
+		Pattern pattern1 = Pattern.compile("\\s+");
+		Matcher matcher1 = pattern1.matcher(mySql) ;
+		Pattern pSelectStar = Pattern.compile("select * from",Pattern.CASE_INSENSITIVE);
+		Matcher mSelectStar = pSelectStar.matcher( matcher1.toLowerCase().replaceAll(" "));
+	    return mSelectStar.matches();
 }
 
 	
-rule "Create Table: The schema specification is missing and needs to be specified"
+rule " Code with Select * in it "
     salience 1
     when
-        wc : WithoutComments(validateText(getText())) 
+        wc : WithoutComments(hasSelectStar(getText())) 
 		
     then
-	    
- 		String errorMessage =  "\n Now Processing File " + wc.getSqlFile().getName();
+ 		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Select * Statement ";
         insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
 end
