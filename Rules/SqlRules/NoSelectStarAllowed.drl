@@ -1,9 +1,3 @@
-/*
-@author Kevin Chappell
-@version 1.0
-@date December 16, 2016
-@description Error when tables are missing a schema name designation
-*/
 package com.datical.hammer.core.sqlrules
 
 import com.datical.db.project.Project;
@@ -36,7 +30,7 @@ function boolean hasSelectStar(String mySql)
 }
 
 	
-rule " Code with Select * in it "
+rule " Code with Select * "
     salience 1
     when
         wc : WithoutComments(hasSelectStar(getText())) 
