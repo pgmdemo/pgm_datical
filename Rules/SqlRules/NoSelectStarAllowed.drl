@@ -42,5 +42,5 @@ rule " Code with Select * in it "
         wc : WithoutComments(hasSelectStar(getText())) 
     then
  		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Select * Statement ";
-        insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
+        insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
 end
