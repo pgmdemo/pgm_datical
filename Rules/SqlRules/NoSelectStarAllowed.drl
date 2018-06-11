@@ -23,11 +23,7 @@ function boolean hasSelectStar(String mySql)
 
 	    Pattern pSelectStar = Pattern.compile("(select)((\\w+\\*)|(\\w+\\.\\*))",Pattern.CASE_INSENSITIVE);
 		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
-	    return mSelectStar.matches();
-
-	    Pattern pSelectStar1 = Pattern.compile("select\\w+\\.\\* from",Pattern.CASE_INSENSITIVE);
-		Matcher mSelectStar1 = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
-		
+	    return mSelectStar.matches() ;
 }
 
 	
