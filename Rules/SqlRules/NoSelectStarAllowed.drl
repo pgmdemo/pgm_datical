@@ -11,9 +11,9 @@ import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.WithComments;
 import com.datical.hammer.core.rules.WithoutComments;
+import com.datical.hammer.core.forecast.rules.RuleFunctions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 function boolean hasSelectStar(String mySql)
 {
@@ -21,9 +21,13 @@ function boolean hasSelectStar(String mySql)
 		Matcher matcher1 = pattern1.matcher(mySql) ;
 	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toLowerCase().toString());
 
-	    Pattern pSelectStar = Pattern.compile("select \\* from",Pattern.CASE_INSENSITIVE);
+	    Pattern pSelectStar = Pattern.compile("select(\\w+\\*.*)|(\\w+\\.\\*.*)",Pattern.CASE_INSENSITIVE);
 		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
 	    return mSelectStar.matches();
+
+	    Pattern pSelectStar1 = Pattern.compile("select\\w+\\.\\* from",Pattern.CASE_INSENSITIVE);
+		Matcher mSelectStar1 = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
+		
 }
 
 	
