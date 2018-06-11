@@ -22,7 +22,7 @@ function boolean hasSelectStar(String mySql)
 	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toString());
 
 	    Pattern pSelectStar = Pattern.compile("select * from",Pattern.CASE_INSENSITIVE);
-		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" "));
+		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
 	    return mSelectStar.matches();
 }
 
@@ -31,7 +31,6 @@ rule " Code with Select * in it "
     salience 1
     when
         wc : WithoutComments(hasSelectStar(getText())) 
-		
     then
  		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Select * Statement ";
         insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
