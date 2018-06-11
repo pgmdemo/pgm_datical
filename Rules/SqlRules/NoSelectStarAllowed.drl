@@ -1,4 +1,12 @@
-package com.datical.hammer.core.sqlrules
+package com.datical.hammer.core.forecase
+
+/* 
+@author Prakash Mistry
+@version 1.001
+@date Jun 11, 2018
+@description Scan for statement with "Select [col1, col2..,a.]*[, colx, coly] from" pattern and raise Warning
+*/
+
 
 import com.datical.db.project.Project;
 import com.datical.hammer.core.rules.Response;
