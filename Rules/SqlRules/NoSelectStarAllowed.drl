@@ -15,7 +15,7 @@ import com.datical.hammer.core.rules.WithoutComments;
 
 function boolean hasSelectStar(String mySql)
 {
-	System.out.println("Validation called For : "+ sql);
+	System.out.println("Validation called For : "+ mySql);
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
 		Pattern pSelectStar = Pattern.compile("select * from",Pattern.CASE_INSENSITIVE);
