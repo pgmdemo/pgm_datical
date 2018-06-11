@@ -15,10 +15,19 @@ import com.datical.hammer.core.rules.WithoutComments;
 // Development tip: Use regex creation and debugging site: https://regex101.com
 
 
+
+
+function boolean validateText(String sql)
+{
+	System.out.println("Validation called For : "+ sql);
+	return true;
+}
+
+	
 rule "Create Table: The schema specification is missing and needs to be specified"
     salience 1
     when
-        wc : WithoutComments() 
+        wc : WithoutComments(validateText(getText())) 
 		
     then
 	    
