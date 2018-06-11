@@ -22,7 +22,7 @@ function boolean hasSelectStar(String mySql)
 	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toLowerCase().toString());
 
 	    Pattern pSelectStar = Pattern.compile("select *\\* ",Pattern.CASE_INSENSITIVE);
-		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
+		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase().toString());
 		
 	    if ( mSelectStar.matches() ) { 
 		 System.out.println(" Pattern Matched ");
