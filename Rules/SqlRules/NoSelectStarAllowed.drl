@@ -23,7 +23,19 @@ function boolean hasSelectStar(String mySql)
 
 	    Pattern pSelectStar = Pattern.compile("(select)((\\w+\\*)|(\\w+\\.\\*))",Pattern.CASE_INSENSITIVE);
 		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase());
-	    return mSelectStar.matches() ;
+		
+	    if ( mSelectStar.matches() ) { 
+		 System.out.println(" Pattern Matched ");
+			while(mSelectStar.find()) 
+			{
+				String comments =mSelectStar.group();
+				System.out.println("Matched String : " + comments);
+			}
+		 return true;
+		} else {
+		 System.out.println("No Match Found");
+		 return false;
+		}
 }
 
 	
