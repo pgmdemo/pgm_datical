@@ -11,6 +11,8 @@ import com.datical.hammer.core.rules.Response;
 import com.datical.hammer.core.rules.Response.ResponseType;
 import com.datical.hammer.core.rules.WithComments;
 import com.datical.hammer.core.rules.WithoutComments;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 function boolean hasSelectStar(String mySql)
