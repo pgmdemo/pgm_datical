@@ -20,7 +20,7 @@ function boolean hasSelectStar(String mySql)
 		boolean itMatched = false;
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
-	    String mySql1 =  matcher1.replaceAll(" ").toLowerCase().toString());
+	    String mySql1 =  matcher1.replaceAll(" ").toLowerCase().toString();
 		Pattern pSelectStar = Pattern.compile("select (([^*]|.*)\\*((?:!\bfrom\b)|.*)from)");
 		
 		for (String newSQl : mySql1.split("select")) {
