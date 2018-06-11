@@ -17,25 +17,22 @@ import java.util.regex.Pattern;
 
 function boolean hasSelectStar(String mySql)
 {
+		boolean itMatched = false;
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
-	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toLowerCase().toString());
-
-	    Pattern pSelectStar = Pattern.compile("select.*\\*.*from");
-		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase().toString());
+	    String mySql1 =  matcher1.replaceAll(" ").toLowerCase().toString());
+		Pattern pSelectStar = Pattern.compile("select (([^*]|.*)\\*((?:!\bfrom\b)|.*)from)");
 		
-	    if ( mSelectStar.matches() ) { 
-		 System.out.println(" Pattern Matched ");
+		for (String newSQl : mySql1.split("select")) {
+		  Matcher mSelectStar = pSelectStar.matcher( "select "+newSQl.trim() );
 			while(mSelectStar.find()) 
 			{
 				String comments =mSelectStar.group();
-				System.out.println("Matched String : " + comments);
+				System.out.println("Found Statement : "+comments );
+				itMatched = true;
 			}
-		 return true;
-		} else {
-		 System.out.println("No Match Found");
-		 return false;
 		}
+		return itMatched;
 }
 
 	
