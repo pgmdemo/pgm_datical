@@ -21,7 +21,7 @@ function boolean hasSelectStar(String mySql)
 		Matcher matcher1 = pattern1.matcher(mySql) ;
 	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toLowerCase().toString());
 
-	    Pattern pSelectStar = Pattern.compile("select \\* ");
+	    Pattern pSelectStar = Pattern.compile("select *\* *");
 		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" ").toLowerCase().toString());
 		
 	    if ( mSelectStar.matches() ) { 
