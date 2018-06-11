@@ -17,9 +17,10 @@ import java.util.regex.Pattern;
 
 function boolean hasSelectStar(String mySql)
 {
-	System.out.println("Validation called For : "+ mySql);
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
+	   System.out.println("Validation called For : "+ matcher1.replaceAll(" ").toString());
+
 	    Pattern pSelectStar = Pattern.compile("select * from",Pattern.CASE_INSENSITIVE);
 		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" "));
 	    return mSelectStar.matches();
