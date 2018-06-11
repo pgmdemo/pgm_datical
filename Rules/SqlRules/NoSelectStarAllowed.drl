@@ -19,7 +19,7 @@ function boolean hasSelectStar(String mySql)
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
 	    Pattern pSelectStar = Pattern.compile("select * from ",Pattern.CASE_INSENSITIVE);
-		Matcher mSelectStar = pSelectStar.matcher( matcher1.toString().toLowerCase().replaceAll(" "));
+		Matcher mSelectStar = pSelectStar.matcher( matcher1.replaceAll(" "));
 	    return mSelectStar.matches();
 }
 
