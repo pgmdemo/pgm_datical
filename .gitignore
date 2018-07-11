@@ -4,6 +4,7 @@ Snapshots/
 Profiles/
 templates/
 backup/
+.auditdb/
 /.classpath
 /.metadata
 /.reporttemplates
