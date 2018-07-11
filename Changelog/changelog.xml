@@ -26,4 +26,16 @@
         </comment>
         <createProcedure path="procedure/20180711100505760_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
     </changeSet>
+    <changeSet appdba:scriptChecksum="9509cb14a5058e820878f5e361e3fe43" author="Prakash Mistry" id="20180711113440258_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc" context="int">
+        <comment>
+            Updated new Proc and Added new One
+        </comment>
+        <createProcedure path="procedure/20180711113440258_TESTDEV.SP_TEST1.prc"  procedureName="SP_TEST1" schemaName="TESTDEV"/>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="422a193c529a0d8c7965564784c29e63" author="Prakash Mistry" id="20180711113440351_TESTDEV.SP_TEST2" labels="main,TESTDEV.SP_TEST2.prc" context="int">
+        <comment>
+            Updated new Proc and Added new One
+        </comment>
+        <createProcedure path="procedure/20180711113440351_TESTDEV.SP_TEST2.prc"  procedureName="SP_TEST2" schemaName="TESTDEV"/>
+    </changeSet>
 </databaseChangeLog>
