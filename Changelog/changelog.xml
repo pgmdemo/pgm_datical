@@ -20,10 +20,10 @@
             <appdba:storageOptions dbms="oracle" path="testdev/storage/T3_tbl_1516248889129.sql"/>
         </createTable>
     </changeSet>
-    <changeSet appdba:scriptChecksum="c471a7a2a09e77b38bddf0d8709e086b" author="Prakash Mistry" id="20180711100505760_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc" context="int">
+    <changeSet appdba:scriptChecksum="c471a7a2a09e77b38bddf0d8709e086b" author="Prakash Mistry" context="int" id="20180711100505760_TESTDEV.SP_TEST1" labels="main,testdev.sp_test1.prc,orclqa">
         <comment>
             Added new statement
         </comment>
-        <createProcedure path="procedure/20180711100505760_TESTDEV.SP_TEST1.prc"  procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <createProcedure path="procedure/20180711100505760_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
     </changeSet>
 </databaseChangeLog>
