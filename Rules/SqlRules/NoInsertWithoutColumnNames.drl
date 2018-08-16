@@ -3,7 +3,7 @@ package com.datical.prerules.forecast
 /* 
 @author Prakash Mistry
 @version 1.001
-@date Aug 16, 2018
+@date Jun 11, 2018
 @description Scan for statement with "Select [col1, col2..,a.]*[, colx, coly] from" pattern and raise Warning
 */
 
@@ -17,20 +17,18 @@ import com.datical.hammer.core.forecast.rules.RuleFunctions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-function boolean hasSelectStar(String mySql)
+function boolean hasInsertWithoutColumnNames(String mySql)
 {
 		boolean itMatched = false;
 		Pattern pattern1 = Pattern.compile("\\s+");
 		Matcher matcher1 = pattern1.matcher(mySql) ;
 	    String mySql1 =  matcher1.replaceAll(" ").toLowerCase().toString();
-		Pattern pSelectStar = Pattern.compile("select (([^*]|.*)\\*((?:!\bfrom\b)|.*)from)");
-		
-		for (String newSQl : mySql1.split("select")) {
-		  Matcher mSelectStar = pSelectStar.matcher( "select "+newSQl.trim() );
-			while(mSelectStar.find()) 
+		Pattern ptoDateNoFormat = Pattern.compile("(Insert\s+into\s+[\w\.]+\s+values)");
+		  Matcher mtoDateNoFormat = ptoDateNoFormat.matcher( mySql1 );
+			while(mtoDateNoFormat.find()) 
 			{
-				String comments =mSelectStar.group();
-				System.out.println("Found Statement : "+comments );
+				String comments =mtoDateNoFormat.group();
+				System.out.println("Found Insert without Column Names : "+comments );
 				itMatched = true;
 			}
 		}
@@ -38,11 +36,11 @@ function boolean hasSelectStar(String mySql)
 }
 
 	
-rule " Code with Select * "
-    salience 91
+rule " Insert without Column Names "
+    salience 92
     when
-        wc : WithoutComments(hasSelectStar(getText())) 
+        wc : WithoutComments(hasInsertWithoutColumnNames(getText())) 
     then
- 		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Select * Statement ";
+ 		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Insert without Column Names ";
         insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
 end
