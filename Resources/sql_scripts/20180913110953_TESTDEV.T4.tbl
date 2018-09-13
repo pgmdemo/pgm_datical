@@ -1,0 +1,32 @@
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+spool '20180913110953_TESTDEV.T4.log'
+
+set define off
+
+SET SQLBLANKLINES ON
+
+SET ERRORLOGGING ON 
+
+SET ERRORLOGGING ON IDENTIFIER 'a58a4ba1-7b40-4d0f-86e4-5b0141ee08b0'
+set linesize 1000;
+SELECT sys_context('userenv','server_host') as DATICAL_TRACEFILE_HOSTNAME from dual;
+alter session set timed_statistics = true;
+alter session set tracefile_identifier =  '20180913111031880';
+alter session set max_dump_file_size = unlimited;
+alter session set events '10046 trace name context forever, level 1';
+SELECT value as DATICAL_TRACE_FILE FROM v$diag_info WHERE name = 'Default Trace File';
+ALTER SESSION SET CURRENT_SCHEMA = TESTDEV;
+ALTER SESSION SET CURSOR_SHARING = EXACT;
+CREATE 
+TABLE TESTDEV.T4
+( C3  Char(1)
+)
+/
+
+alter session set events '10046 trace name context off';
+
+set define on
+
+spool off
+
+exit

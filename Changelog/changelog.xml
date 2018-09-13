@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:storedlogic="http://www.datical.net/xml/ns/storedlogic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" logicalFilePath="Changelog/changelog.xml" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:storedlogic="http://www.datical.net/xml/ns/storedlogic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" logicalFilePath="Changelog/changelog.xml" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd http://www.datical.net/xml/ns/storedlogic http://www.datical.net/xml/ns/storedlogic-1.0.xsd http://www.datical.net/xml/ns/appdba http://www.datical.net/xml/ns/appdba-1.0.xsd">
     <changeSet author="PGM" context="dev" created="Thu Jan 11 11:38:22 CST 2018" id="TESTDEV_T1.tbl" labels="main">
         <createTable tableName="T1">
             <column name="C1" type="CHAR(1)">
@@ -8,7 +8,7 @@
         </createTable>
     </changeSet>
     <changeSet author="PGM" context="INT" created="Thu Jan 11 12:13:58 CST 2018" id="TESTDEV_T2">
-        <createTable schemaName="TESTDEV"  tableName="T2">
+        <createTable schemaName="TESTDEV" tableName="T2">
             <column name="C1" type="CHAR(1)">
                 <constraints nullable="true" primaryKey="false" unique="false"/>
             </column>
@@ -37,5 +37,19 @@
             Updated new Proc and Added new One
         </comment>
         <createProcedure path="procedure/20180711113440351_TESTDEV.SP_TEST2.prc" procedureName="SP_TEST2" schemaName="TESTDEV"/>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="4a711ebffc1e678e5bbd40517c00f4b2" author="Prakash Mistry" context="int" created="2018-09-13 11:09-0500" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="1" datical:versionStrategy="DEPLOY_ALL" id="20180913110930749_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20180913110930749_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>Added new statement</comment>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="6059c41c7131b2a61142d282e94def95" author="Prakash Mistry" context="int" created="2018-09-13 11:09-0500" datical:origFileName="TESTDEV.SP_TEST2.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="1" datical:versionStrategy="DEPLOY_ALL" id="20180913110931341_TESTDEV.SP_TEST2" labels="main,TESTDEV.SP_TEST2.prc">
+        <createProcedure path="procedure/20180913110931341_TESTDEV.SP_TEST2.prc" procedureName="SP_TEST2" schemaName="TESTDEV"/>
+        <comment>Updated new Proc and Added new One</comment>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="6d94eb13fe8b3b9eedd0e9c4c6971dba" author="t54vcde (generated)" context="int" created="2018-09-13 11:11-0500" datical:origFileName="TESTDEV.T4.tbl.sql" datical:origFilePath="ddl/other/TESTDEV" datical:version="1" datical:versionStrategy="DEPLOY_ALL" id="tm6a-1 (createTable tableName=T4)" labels="main, testdev.t4.tbl" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable schemaName="TESTDEV" tableName="T4">
+            <column name="C3" type="CHAR(1 BYTE)"/>
+            <appdba:storageOptions dbms="oracle" path="testdev/storage/T4_tbl_1536855060827.sql"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>
