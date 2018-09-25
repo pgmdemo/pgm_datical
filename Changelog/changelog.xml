@@ -52,4 +52,8 @@
             <appdba:storageOptions dbms="oracle" path="testdev/storage/T4_tbl_1536855060827.sql"/>
         </createTable>
     </changeSet>
+    <changeSet appdba:scriptChecksum="bed648491d063c49e26413d2ba44eda6" author="Prakash Mistry" context="int" created="2018-09-25 14:07-0500" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="2" datical:versionStrategy="DEPLOY_ALL" id="20180925140755572_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20180925140755572_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>Removed Comment</comment>
+    </changeSet>
 </databaseChangeLog>
