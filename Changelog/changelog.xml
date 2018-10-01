@@ -68,4 +68,8 @@
         <createProcedure path="procedure/20180928114714309_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
         <comment>Added a Chnage</comment>
     </changeSet>
+    <changeSet appdba:scriptChecksum="df3fbefb0c2b2f02eb69e3273d0e5824" author="Prakash Mistry" context="int" created="2018-10-01 13:51-0500" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="6" datical:versionStrategy="DEPLOY_ALL" id="20181001135114606_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20181001135114606_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>DEMO</comment>
+    </changeSet>
 </databaseChangeLog>
