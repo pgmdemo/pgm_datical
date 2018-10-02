@@ -80,4 +80,14 @@
         <createProcedure path="procedure/2018100122323048_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
         <comment>sadad</comment>
     </changeSet>
+    <changeSet appdba:scriptChecksum="d522eac330088a813a6a12b79387713c" author="Prakash Mistry" context="int" created="2018-10-02 15:21-0500" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="9" datical:versionStrategy="DEPLOY_ALL" id="20181002152131694_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20181002152131694_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>dsadd</comment>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="1e08ad26a904816d94803a9b79920581" author="t54vcde (generated)" context="int" created="2018-10-02 15:22-0500" datical:origFileName="TESTDEV.T5.tbl.sql" datical:origFilePath="ddl/other/TESTDEV" datical:version="1" datical:versionStrategy="DEPLOY_ALL" id="5pvv-1 (createTable tableName=T5)" labels="main, testdev.t5.tbl" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable schemaName="TESTDEV" tableName="T5">
+            <column name="C1" type="CHAR(1 BYTE)"/>
+            <appdba:storageOptions dbms="oracle" path="testdev/storage/T5_tbl_1538511726789.sql"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
