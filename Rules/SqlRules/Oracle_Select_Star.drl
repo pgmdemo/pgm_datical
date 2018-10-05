@@ -1,0 +1,104 @@
+/*
+@author Aman Mulkalwar
+@date August 08, 2017
+@description Columns to be read with a 'SELECT' statement should be clearly defined
+
+Copyright (c) 2017 Datical, Inc. All Rights Reserved.
+*/
+
+/*
+README:
+
+This is a SQL rule which restrics the user from using 'SELECT *' statement
+
+SQL Rules only run through Command Prompt
+
+*/
+
+// ************************************ Packages ************************************
+
+// Setting the rule type ensures that people using the rule will know where to place
+// it in the directory structure
+
+package com.datical.hammer.core.sqlRules
+
+// ******************************** Helper Functions ********************************
+
+// Rules Engine Utility Methods (used by all rules)
+
+
+import com.datical.db.project.Project;
+import com.datical.hammer.core.rules.ProjectResources;
+import com.datical.hammer.core.rules.Response;
+import com.datical.hammer.core.rules.Response.ResponseType;
+import com.datical.hammer.core.forecast.rules.RuleFunctions;
+import org.apache.commons.lang.StringUtils;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+// Specific for SQL Rules
+
+import com.datical.hammer.core.rules.WithComments;
+import com.datical.hammer.core.rules.WithoutComments;
+
+// xxxxxxxxxxxxxxxxxxxxxxxxX DO NOT EDIT ANYTHING BEFORE THIS xxxxxxxxxxxxxxxxxxxxxxx
+
+// ************************************* Rules **************************************
+
+function boolean ValidateSelect(String sql)
+{
+
+//String commentStrippedSql, sql_new;
+    sql = "\n" + sql + "\n";
+    sql = sql.trim();
+    sql = sql.toLowerCase();
+    String response = "";
+    //String loopString = "";
+
+    List<String> list1 = new ArrayList<String>();
+
+
+    //System.out.println("new sql: " + sql);
+      if (sql.length() == 0)
+      return false;
+
+       if(sql.contains("select"))
+      {
+      String selectString[] = StringUtils.substringsBetween(sql,"select",";");
+      for(int i=0;i<selectString.length;i++)
+      {
+      System.out.println("LOOP: "+selectString[i]);
+      if((selectString[i].contains("*"))){
+           response = "N";
+ 		}
+ 		else{
+ 		response = "Y";
+
+      }
+
+      list1.add(response);
+      }
+
+      }
+      else
+      {
+      return false;
+      }
+      if(list1.contains("N"))
+          return true;
+      else
+      		return false;
+
+
+ }
+
+rule "Columns to be read with a 'SELECT' statement should be clearly defined"
+	when
+
+		wc : WithoutComments(ValidateSelect(getText().toLowerCase()))
+
+	then
+		String errorMessage = "The select statement in sql script (" + wc.getSqlFile().getName() + ") may not contain 'SELECT *'. Specify column names instead.";
+		insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
+end
