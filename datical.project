@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
 <dbproject:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dbproject="http://datical.com/db/project/1.0" name="PGMTST1" storedLogicExternal="true" deployThreshold="stopOnError" requireOptions="true" limitForecastProfiling="true" deployMode="quick" projectsId="73b1217f-f3b8-4f8b-a196-ea2c4cd7adac" runtimeCredentials="false" multiSchema="true" dbSchemaDefinition="project" schemaSelectionStep="ORCL12" trackingSchema="DATICAL_TRACK" enableRowCount="false">
-  <dbDefs xsi:type="dbproject:OracleDbDef" name="CDB1" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" serviceName="ORCL12" username="DATICAL_USER" password="oracle" contexts="NA" storageOptionCollectedAtSnapshot="true" labels="none" enableCompression="false"/>
-  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCL12" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" serviceName="ORCL12" username="DATICAL_USER" password="oracle" contexts="INT" storageOptionCollectedAtSnapshot="true" labels="main" enableCompression="false"/>
-  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLDV" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" serviceName="ORCLDV" username="DATICAL_USER" password="oracle" contexts="DEV" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" enableCompression="false"/>
-  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLQA" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" serviceName="ORCLQA" username="DATICAL_USER" password="oracle" contexts="QA" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" enableCompression="false"/>
-  <plans name="MAIN" description="Main release pipeline for shared testing schema" databaseDefs="//@dbDefs[name='ORCL12'] //@dbDefs[name='ORCLDV'] //@dbDefs[name='ORCLQA'] "/>
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="CDB1" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="NA" storageOptionCollectedAtSnapshot="true" labels="none" serviceName="ORCL12" enableCompression="false"/>
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCL12" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="INT" storageOptionCollectedAtSnapshot="true" labels="main" serviceName="ORCL12" enableCompression="false"/>
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLDV" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="DEV" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" serviceName="ORCLDV" enableCompression="false"/>
+  <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLQA" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="QA" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" serviceName="ORCLQA" enableCompression="false"/>
+  <plans name="MAIN" description="Main release pipeline for shared testing schema" databaseDefs="//@dbDefs[name='ORCL12'] //@dbDefs[name='ORCLDV'] //@dbDefs[name='ORCLQA']"/>
   <plans name="ORCLQA" description="QA release pipeline for testing schema" databaseDefs="//@dbDefs[name='ORCLDV']"/>
   <changelog href="Changelog/changelog.xml#//@databaseChangeLog"/>
   <releaseLabels name="main" description="MAIN Pipeline Label"/>
   <releaseLabels name="qa" description="QA Pipeline Label"/>
   <releaseLabels name="abandoned" description="mark item to not progress any further"/>
-  <auditDB xsi:type="dbproject:OracleDbDef" name="AUDITDB" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_AUDIT" password="oracle" dbDefType="audit" serviceName="ORCL12" enableCompression="false"/>
+  <auditDB xsi:type="dbproject:OracleDbDef" name="AUDITDB" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_AUDIT" password="b3JhY2xl" dbDefType="audit" serviceName="ORCL12" enableCompression="false"/>
   <schemas name="SCOTT"/>
   <schemas name="TESTDEV"/>
   <schemas name="TESTPQT"/>
