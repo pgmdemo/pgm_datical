@@ -4,11 +4,9 @@
   <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCL12" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="INT" storageOptionCollectedAtSnapshot="true" labels="main" serviceName="ORCL12" enableCompression="false"/>
   <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLDV" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="DEV" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" serviceName="ORCLDV" enableCompression="false"/>
   <dbDefs xsi:type="dbproject:OracleDbDef" name="ORCLQA" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_USER" password="b3JhY2xl" contexts="QA" storageOptionCollectedAtSnapshot="true" labels="main and !abandoned" serviceName="ORCLQA" enableCompression="false"/>
-  <plans name="MAIN" description="Main release pipeline for shared testing schema" databaseDefs="//@dbDefs[name='ORCL12'] //@dbDefs[name='ORCLDV'] //@dbDefs[name='ORCLQA']"/>
-  <plans name="ORCLQA" description="QA release pipeline for testing schema" databaseDefs="//@dbDefs[name='ORCLDV']"/>
+  <plans name="MAIN" description="Main release pipeline for shared testing schema" databaseDefs="//@dbDefs[name='ORCL12'] "/>
   <changelog href="Changelog/changelog.xml#//@databaseChangeLog"/>
   <releaseLabels name="main" description="MAIN Pipeline Label"/>
-  <releaseLabels name="qa" description="QA Pipeline Label"/>
   <releaseLabels name="abandoned" description="mark item to not progress any further"/>
   <auditDB xsi:type="dbproject:OracleDbDef" name="AUDITDB" driver="oracle.jdbc.OracleDriver" hostname="127.0.0.1" port="1521" username="DATICAL_AUDIT" password="b3JhY2xl" dbDefType="audit" serviceName="ORCL12" enableCompression="false"/>
   <schemas name="SCOTT"/>
