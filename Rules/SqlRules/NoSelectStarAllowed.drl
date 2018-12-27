@@ -20,9 +20,21 @@ import java.util.regex.Pattern;
 function boolean hasSelectStar(String mySql)
 {
 		boolean itMatched = false;
-		Pattern pattern1 = Pattern.compile("\\s+");
-		Matcher matcher1 = pattern1.matcher(mySql) ;
-	    String mySql1 =  matcher1.replaceAll(" ").toLowerCase().toString();
+		String mySql1 = new String();
+
+		Pattern pattern0 = Pattern.compile("\'\'");
+		Matcher matcher0 = pattern0.matcher(mySql) ;
+	    mySql1 =    matcher0.replaceAll(" ").toString();
+
+		Pattern pattern0 = Pattern.compile("\'.*\'");
+		Matcher matcher0 = pattern0.matcher(mySql1) ;
+	    mySql1 =    matcher0.replaceAll(" ").toString();
+
+		Pattern pattern0 = Pattern.compile("\\s+");
+		Matcher matcher0 = pattern0.matcher(mySql1) ;
+	    mySql1 =  matcher0.replaceAll(" ").toLowerCase().toString();
+
+		
 		Pattern pSelectStar = Pattern.compile("select (([^*]|.*)\\*((?:!\bfrom\b)|.*)from)");
 		
 		for (String newSQl : mySql1.split("select")) {
@@ -44,5 +56,5 @@ rule " Code with Select * "
         wc : WithoutComments(hasSelectStar(getText())) 
     then
  		String errorMessage =  "\n File " + wc.getSqlFile().getName() + " Contains Select * Statement ";
-        insert(new Response(ResponseType.WARN, errorMessage, drools.getRule().getName()));
+        insert(new Response(ResponseType.FAIL, errorMessage, drools.getRule().getName()));
 end
