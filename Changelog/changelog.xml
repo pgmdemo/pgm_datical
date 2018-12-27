@@ -84,4 +84,12 @@
             <appdba:storageOptions dbms="oracle" path="testdev/storage/T5_tbl_1538511726789.sql"/>
         </createTable>
     </changeSet>
+    <changeSet appdba:scriptChecksum="24aa914a6a8d83fb01be3ab498b9eee9" author="Prakash Mistry" context="dev" created="2018-12-27 09:50-0600" datical:origFileName="TESTDEV.SP_TEST2.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="2" datical:versionStrategy="DEPLOY_LATEST" id="20181227095023958_TESTDEV.SP_TEST2" labels="main,TESTDEV.SP_TEST2.prc">
+        <createProcedure path="procedure/20181227095023958_TESTDEV.SP_TEST2.prc" procedureName="SP_TEST2" schemaName="TESTDEV"/>
+        <comment>test case Slect /*+</comment>
+    </changeSet>
+    <changeSet appdba:scriptChecksum="00473eaa5f07e9c4c31b491ce249cad3" author="Prakash Mistry" context="dev" created="2018-12-27 09:50-0600" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="10" datical:versionStrategy="DEPLOY_LATEST" id="20181227095024427_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20181227095024427_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>Simple Case</comment>
+    </changeSet>
 </databaseChangeLog>
