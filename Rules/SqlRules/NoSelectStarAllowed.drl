@@ -21,17 +21,19 @@ function boolean hasSelectStar(String mySql)
 {
 		boolean itMatched = false;
 		String mySql1 = new String();
-
-		Pattern pattern0 = Pattern.compile("\'\'");
-		Matcher matcher0 = pattern0.matcher(mySql) ;
+		Pattern pattern0;
+		Matcher matcher0 ;
+		
+		pattern0 = Pattern.compile("\'\'");
+		matcher0 = pattern0.matcher(mySql) ;
 	    mySql1 =    matcher0.replaceAll(" ").toString();
 
-		Pattern pattern0 = Pattern.compile("\'.*\'");
-		Matcher matcher0 = pattern0.matcher(mySql1) ;
+		pattern0 = Pattern.compile("\'.*\'");
+		matcher0 = pattern0.matcher(mySql1) ;
 	    mySql1 =    matcher0.replaceAll(" ").toString();
 
-		Pattern pattern0 = Pattern.compile("\\s+");
-		Matcher matcher0 = pattern0.matcher(mySql1) ;
+		pattern0 = Pattern.compile("\\s+");
+		matcher0 = pattern0.matcher(mySql1) ;
 	    mySql1 =  matcher0.replaceAll(" ").toLowerCase().toString();
 
 		
