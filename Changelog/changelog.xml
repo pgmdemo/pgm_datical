@@ -96,4 +96,8 @@
         <createProcedure path="procedure/20181227101841672_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
         <comment>Should Fail</comment>
     </changeSet>
+    <changeSet appdba:scriptChecksum="7349393b6a9e096f010967ac0aa62f73" author="Prakash Mistry" context="dev" created="2018-12-28 15:44-0600" datical:origFileName="TESTDEV.SP_TEST1.prc" datical:origFilePath="procedure/TESTDEV" datical:rerunnable="true" datical:version="12" datical:versionStrategy="DEPLOY_LATEST" id="20181228154406947_TESTDEV.SP_TEST1" labels="main,TESTDEV.SP_TEST1.prc">
+        <createProcedure path="procedure/20181228154406947_TESTDEV.SP_TEST1.prc" procedureName="SP_TEST1" schemaName="TESTDEV"/>
+        <comment>added comment</comment>
+    </changeSet>
 </databaseChangeLog>
