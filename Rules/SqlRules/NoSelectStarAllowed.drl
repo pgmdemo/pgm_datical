@@ -1,12 +1,10 @@
 package com.datical.prerules.forecast
-
 /* 
 @author Prakash Mistry
 @version 1.001
 @date Aug 16, 2018
-@description Scan for statement with "Select [col1, col2..,a.]*[, colx, coly] from" pattern and raise Warning
+@description Scan for statement with "Select [col1, col2..] [x.]*[, colx, coly] from" pattern and raise Warning
 */
-
 
 import com.datical.db.project.Project;
 import com.datical.hammer.core.rules.Response;
@@ -39,16 +37,27 @@ function boolean hasSelectStar(String mySql)
 		
 		Pattern pSelectStar = Pattern.compile("select (([^*]|.*)\\*((?:!\bfrom\b)|.*)from)");
 		
-		for (String newSQl : mySql1.split("select")) {
-		  Matcher mSelectStar = pSelectStar.matcher( "select "+newSQl.trim() );
-			while(mSelectStar.find()) 
-			{
-				String comments =mSelectStar.group();
-				System.out.println("Found Statement : "+comments );
-				itMatched = true;
-			}
+		Matcher mSelectStar = pSelectStar.matcher( mySql1 );
+		while(mSelectStar.find()) 
+		{ 
+			   for (String newSQl : mSelectStar.group().split("select")) {
+					  if (newSQl.indexOf(" from") > 0) {
+					    newSQl= newSQl.substring(0,newSQl.indexOf(" from"));
+					  }
+					  if (newSQl.indexOf(" into ") > 0) {
+					     newSQl= newSQl.substring(0,newSQl.indexOf(" into "));
+					  } 
+				    for (String newSQl1 : newSQl.split(",")) {
+					   if (newSQl1.equals(" * ") || (newSQl1.indexOf(".*") > 0 ) ) {
+						  System.out.println("Select * Rule Voilated -->" + newSQl ) ;
+					      itMatched = true;
+						  return itMatched;
+					   }
+						
+					}
+			    }  // End of For Loop
 		}
-		return itMatched;
+ return itMatched;
 }
 
 	
